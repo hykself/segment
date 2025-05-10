@@ -33,7 +33,7 @@ def compare_with_jieba(text, word_dict, max_len):
     jieba_result = list(jieba.cut(text))
     
     # 结果输出到文件
-    with open('output.txt', 'w', encoding='utf-8') as f:
+    with open('output-fmm.txt', 'w', encoding='utf-8') as f:
         f.write("前向最大匹配结果: " + '/ '.join(fmm_result) + "\n")
         f.write("\nJieba分词结果: " + '/ '.join(jieba_result))
 
