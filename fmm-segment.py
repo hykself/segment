@@ -1,3 +1,5 @@
+import time
+
 import jieba
 
 def load_dict():
@@ -24,17 +26,31 @@ def forward_max_match(text, word_dict, max_len):
             window_size -= 1
     return result
 
+# 在 compare_with_jieba 函数中添加评估逻辑
 def compare_with_jieba(text, word_dict, max_len):
-    # 前向最大匹配结果
+    # 添加计时功能
+    start_time = time.time()
     fmm_result = forward_max_match(text, word_dict, max_len)
-    
-    # 加载自定义词典（可选）
+    fmm_time = time.time() - start_time
+
     jieba.load_userdict('word.txt')
     jieba_result = list(jieba.cut(text))
     
-    # 结果输出到文件
+    # 评估指标计算
+    evaluation = {
+        '分词数量': len(fmm_result),
+        '单字词数量': sum(1 for w in fmm_result if len(w) == 1),
+        '处理时间(ms)': round(fmm_time * 1000, 2),
+        '与Jieba重合度': len(set(fmm_result) & set(jieba_result)) / len(jieba_result)
+    }
+
     with open('output-fmm.txt', 'w', encoding='utf-8') as f:
         f.write("前向最大匹配结果: " + '/ '.join(fmm_result) + "\n")
+
+    # 生成评估报告
+    with open('report-fmm.txt', 'w', encoding='utf-8') as f:
+        f.write("【前向匹配评估报告】\n")
+        [f.write(f"{k}: {v}\n") for k, v in evaluation.items()]
         f.write("\nJieba分词结果: " + '/ '.join(jieba_result))
 
 if __name__ == "__main__":

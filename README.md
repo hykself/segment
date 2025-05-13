@@ -41,6 +41,10 @@
   双向匹配+Jieba对比结果
 - `output.txt`  
   历史测试结果存档
+- `report-bmm.txt`
+  双向匹配算法测试结果
+- `report-fmm.txt`
+  前向匹配算法测试结果
 
 ## 使用方法
 1. 准备词典：
