@@ -4,7 +4,7 @@ import jieba
 
 def load_dict():
     # 读取词典并获取最大词长
-    with open('word.txt', 'r', encoding='utf-8') as f:
+    with open('word1.txt', 'r', encoding='utf-8') as f:
         word_dict = {line.strip() for line in f}
     max_len = max(len(word) for word in word_dict)
     return word_dict, max_len

@@ -44,7 +44,7 @@ def compare_with_jieba(text, word_dict, max_len):
     bmm_result = bidirectional_max_match(text, word_dict, max_len)
     bmm_time = time.time() - start_time
 
-    jieba.load_userdict('word.txt')
+    jieba.load_userdict('word1.txt')
     jieba_result = list(jieba.cut(text))
     
     # 双向匹配特有评估指标
@@ -70,7 +70,7 @@ def compare_with_jieba(text, word_dict, max_len):
 if __name__ == "__main__":
     # 加载词典
     word_dict = set()
-    with open('word.txt', 'r', encoding='utf-8') as f:
+    with open('word1.txt', 'r', encoding='utf-8') as f:
         word_dict.update(line.strip() for line in f)
     
     # 读取训练文本

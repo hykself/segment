@@ -25,11 +25,12 @@
   功能：  
   - 将JSON格式词典`word.json`转换为文本格式`word.txt`  
   - 支持自定义词典结构
-
+- `creare_dictionary.py`
+   根据测试文本生成词典
 ### 📁 数据文件
 - `word.json`  
   原始词典文件（JSON格式）
-- `word.txt`  
+- `word1.txt`  
   处理后的纯文本词典（每行一个词）
 - `test.txt`  
   待分词的中文测试文本
